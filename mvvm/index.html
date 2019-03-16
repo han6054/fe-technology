@@ -5,22 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>mvvm</title>
 </head>
 
 <body>
     <div id="app">
-        <input type="text" v-model="school.name">
-        <div>{{school.name}}</div>
-        <div>{{school.age}}</div>
+        <input type="text" v-model="person.name">
+        <div>{{person.name}}</div>
+        <div>{{person.age}}</div>
         <ul>
             <li>1</li>
             <li>1</li>
         </ul>
+        {{getName}}
+        <button v-on:click="change">更新操作</button>
     </div>
 </body>
-<script src="https://lib.baomitu.com/vue/2.6.8/vue.js"></script>
+<script src="mvvm.js"></script>
 <script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            person: {
+                name: 'joker',
+                age: 2
+            }
+        },
+        computed: {
+            getName() {
+                return this.person.name + 'good man'
+            }
+        },
+        methods: {
+            change() {
+                this.person.name = 'jalan'
+            }
+        }
+    })
 </script>
 
 </html>
