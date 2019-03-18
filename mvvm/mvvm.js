@@ -39,7 +39,6 @@ class Complier {
         if (/\{\{(.+?)\}\}/.test(content)) {
             ComplieUtil['text'](node, content, this.vm)
         }
-
     }
     complie(fragment) { // 用来编译内存中dom节点 找到v-,{{}}
         let childNodes = fragment.childNodes;
