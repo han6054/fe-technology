@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll</title>
+</head>
+<style>
+    ul li {
+        width: 100%;
+        height: 200px;
+        background-color: aqua
+    }
+</style>
+<body>
+<ul class="ul">
+    <li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li>
+    <li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li><li>元素</li>
+</ul>
+</body>
+<script>
+    let ul = document.querySelector('.ul')
+    let len = ul.children.length
+    let lastCur = ul.children[len-1]
+
+    document.addEventListener('scroll', debounce(logger, 200))
+
+    function debounce(func, wait) {
+        let timeout;
+        return function(){
+            clearTimeout(timeout)
+            timeout = setTimeout(() => {
+                func.apply(this, arguments)
+                timeout = null
+            }, wait)
+        }
+    }
+    function logger(){
+        // 卷去的高度 + 屏幕的高度 >= 最后一个元素的offsetTop + 自身一半的高度
+        let scrollTopHeight = document.documentElement.scrollTop
+        let clientHeight = document.documentElement.clientHeight
+        let lastOffsetTop = lastCur.offsetTop + 100
+        console.log(scrollTopHeight + clientHeight >= lastOffsetTop)
+    }
+</script>
+</html>
