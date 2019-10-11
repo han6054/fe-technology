@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56bff9d3-d32c-45e9-9d6b-f8947f0c5a94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="56bff9d3-d32c-45e9-9d6b-f8947f0c5a94" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +62,7 @@
       <updated>1556088575894</updated>
       <workItem from="1556088577202" duration="4243000" />
       <workItem from="1556177019484" duration="11000" />
-      <workItem from="1570763223210" duration="11355000" />
+      <workItem from="1570763223210" duration="11604000" />
     </task>
     <task id="LOCAL-00001" summary="函数节流">
       <created>1570763347022</created>
@@ -94,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570786466494</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="react ssr">
+      <created>1570786624913</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1570786624913</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
