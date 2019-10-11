@@ -1,6 +1,4 @@
 
-最近面试了好多前端应聘者, 每个人都了解Vue中mvvm实现原理，回答一般都是根据 *Object.defineproperty* 监听属性变化，触发set 修改input变化。对于页面单一个值的变化是可以，但是正常的使用来说，我们不过有多个input,还有多个指令(v-bind、v-model、v-html, v-text)等，还包括({{xxx}})语法，都需要找到对应的set触发，前提要找到当前的元素和文本节点进行修改value，
-#### 双向绑定原理为：
 
 - Complier（编译器）
  
