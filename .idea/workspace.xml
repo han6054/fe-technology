@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bff9d3-d32c-45e9-9d6b-f8947f0c5a94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fe-scaffold-tools/.ignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-scaffold-tools/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-scaffold-tools/bin/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/pages/user/detail.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/pages/user/user.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/plugins/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/nuxt/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-scaffold-tools/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fe-scaffold-tools/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +81,8 @@
       <workItem from="1570943688775" duration="106000" />
       <workItem from="1570943939694" duration="23000" />
       <workItem from="1572169256776" duration="46000" />
-      <workItem from="1572318416195" duration="7697000" />
+      <workItem from="1572318416195" duration="9479000" />
+      <workItem from="1572403621498" duration="360000" />
     </task>
     <task id="LOCAL-00001" summary="函数节流">
       <created>1570763347022</created>
@@ -132,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570938015355</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="前端脚手架工具">
+      <created>1572338321318</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1572338321318</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +156,7 @@
     <MESSAGE value="函数节流" />
     <MESSAGE value="h5toNative" />
     <MESSAGE value="react ssr" />
-    <option name="LAST_COMMIT_MESSAGE" value="react ssr" />
+    <MESSAGE value="前端脚手架工具" />
+    <option name="LAST_COMMIT_MESSAGE" value="前端脚手架工具" />
   </component>
 </project>
