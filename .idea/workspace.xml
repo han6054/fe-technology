@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56bff9d3-d32c-45e9-9d6b-f8947f0c5a94" name="Default Changelist" comment="" />
+    <list default="true" id="56bff9d3-d32c-45e9-9d6b-f8947f0c5a94" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/layouts/users.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/pages/user/_id.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-js/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-js/数据类型专函规则.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/nuxt/nuxt_project/plugins/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/plugins/router.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,11 +47,11 @@
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/vue" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -79,7 +86,7 @@
       <workItem from="1570943939694" duration="23000" />
       <workItem from="1572169256776" duration="46000" />
       <workItem from="1572318416195" duration="9479000" />
-      <workItem from="1572403621498" duration="603000" />
+      <workItem from="1572403621498" duration="14134000" />
     </task>
     <task id="LOCAL-00001" summary="函数节流">
       <created>1570763347022</created>
@@ -137,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572404057356</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary=":fire:">
+      <created>1572404334145</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572404334145</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +176,7 @@
     <MESSAGE value="react ssr" />
     <MESSAGE value="前端脚手架工具" />
     <MESSAGE value=":sparkles: 前端脚手架工具" />
-    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: 前端脚手架工具" />
+    <MESSAGE value=":fire:" />
+    <option name="LAST_COMMIT_MESSAGE" value=":fire:" />
   </component>
 </project>
