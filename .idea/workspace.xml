@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bff9d3-d32c-45e9-9d6b-f8947f0c5a94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/layouts/users.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/pages/user/_id.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/server/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe-js/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe-js/数据类型专函规则.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/nuxt/nuxt_project/pages/user/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/pages/user/detail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/nuxt/nuxt_project/plugins/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue/nuxt/nuxt_project/plugins/router.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
