@@ -47,11 +47,26 @@
         constructor(color:string, side: number) {
             super(color, side, side)
         }
-        shoutout() {
+        shout() {
             return '我是' + this.color + this.area + '平方厘米'
         }
     }
-    const square = new Square('blue', 2)
-    // console.log(square.shoutout())
+    const square = new Square('blue', 2).shout()
+    console.log(square)
+
+
+    class Employee {
+        private firstName = 'Mike';
+        private lastName = 'James';
+        get fullName(): string {
+            return this.firstName + ' ' + this.lastName
+        }
+        set fullName(newName:string) {
+            this.firstName = newName.split(' ')[0];
+            this.lastName = newName.split(' ')[1];
+        }
+    }
+    const employee = new Employee();
+    employee.fullName = 'joker jj' // 好处：不能直接访问内部私有属性
 </script>
 <style scoped></style>
