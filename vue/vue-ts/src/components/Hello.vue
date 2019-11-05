@@ -51,7 +51,7 @@
             return '我是' + this.color + this.area + '平方厘米'
         }
     }
-    const square = new Square('blue', 2).shout()
+    const square = new Square('blue', 3).shout()
     console.log(square)
 
 
