@@ -21,7 +21,6 @@ function MyPromise(executor) {
             })
         }
     }
-
     function reject(reason) {
         if (self.status === 'pending') {
             self.status = 'rejected';
@@ -33,7 +32,6 @@ function MyPromise(executor) {
             })
         }
     }
-
     try {
         executor(resolve.bind(this), reject.bind(this))
     } catch (e) {
@@ -42,13 +40,62 @@ function MyPromise(executor) {
 
 }
 
-MyPromise.prototype.then = function (onResolved, onReject) {
+MyPromise.prototype.then = function (onResolved, onRejected) {
     let self = this;
     let promise2;
     onResolved = typeof onResolved === 'function' ? onResolved: (v)=> v;
-    onReject = typeof onReject === 'function' ? onReject: (r) => { throw r };
+    onRejected = typeof onRejected === 'function' ? onRejected: (r) => { throw r };
 
     if (self.status === 'resolved') {
-        self.onResolveCallBack.push(onResolved)
+        return promise2 = new Promise((resolve,reject) => {
+            try {
+                let x = onResolved(self.data);
+                if (x instanceof Promise) {
+                    x.then(resolve, reject)
+                }
+                resolve(x) //
+            } catch (e) {
+                reject(e) //
+            }
+        })
     }
-}
+    if (self.status === 'rejected') {
+        return promise2 = new Promise((resolve,reject) => {
+            try {
+                let x = onRejected(self.data);
+                if (x instanceof Promise) {
+                    x.then(resolve, reject)
+                }
+            } catch (e) {
+                reject(e)
+            }
+        })
+    }
+    if (self.status === 'pending') {
+        return promise2 = new Promise((resolve,reject) => {
+           self.onResolveCallBack.push(function () {
+               try {
+                  let x = onResolved(self.data);
+                   if(x instanceof Promise) {
+                       x.then(resolve,reject)
+                   }
+               } catch(e) {
+                  reject(e)
+               }
+           });
+           self.onRejectCallback.push(function () {
+               try {
+                   let x = onRejected(self.reason);
+                   if(x instanceof Promise) {
+                       x.then(resolve, reject)
+                   }
+               } catch (e) {
+                   reject(e)
+               }
+           })
+        })
+    }
+};
+MyPromise.prototype.catch = function (onRejected) {
+    return this.then(null, onRejected)
+};
