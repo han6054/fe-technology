@@ -10,7 +10,6 @@ export default context => {
             context.rendered = () => {
                 context.state = store.state
             }
-
             resolve(app)
         }, reject)
     })
