@@ -1,14 +1,14 @@
-let app = new require('koa');
-
-app.use(async (ctx, next)=> {
+let Koa = require('koa');
+let app = new Koa();
+app.use(async (ctx, next) => {
     Math.random() > 0.9 ? aaa(): '';
-    next()
+    await next()
     ctx.body = 'run'
 })
 if(!module.parent) {
-    app.listen(() => {
-        console.log('server start at 3000')
-      }, 3000)
+    app.listen(3000, () => {
+        console.log('start at 3000 port')
+    })
 } else {
     module.exports = app;
 }
