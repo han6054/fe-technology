@@ -10,9 +10,10 @@ http.createServer((req, res) => {
       let str = callback + `(${JSON.stringify(data)})`
         console.log(str);
         res.end(str)
+    } else {
+        console.log(queryString.parse(params.query).callback)
+        res.end(JSON.stringify(data))
     }
-    console.log(queryString.parse(params.query).callback)
-    res.end(JSON.stringify(data))
 
 }).listen(5000,() => {
     console.log('启动端口号5000')
