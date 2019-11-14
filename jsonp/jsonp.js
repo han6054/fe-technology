@@ -1,5 +1,5 @@
 const http = require('http');
-const url = require('url')
+const url = require('url');
 const data = {'data': 'hello'};
 const queryString = require('querystring')
 
