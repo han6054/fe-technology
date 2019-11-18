@@ -1,5 +1,5 @@
 let path = require('path');
-
+const CopyRightWebpackPlugins = require('./plugins/copyRight-webpack-plugins')
 module.exports =  {
     mode: 'development',
     entry: {
@@ -21,5 +21,10 @@ module.exports =  {
                 }
             }
         ]
-      }
+      },
+    plugins:[
+       new CopyRightWebpackPlugins({
+           name: 'joker'
+       })
+    ]
     }
