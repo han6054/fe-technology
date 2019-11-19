@@ -73,8 +73,8 @@ class Observer {
         }
     }
     denfenReactive(obj, key, value) {
-        this.observer(value)
-        let dep = new Dep() // $data中所有属性添加一个发布订阅的功能
+        this.observer(value);
+        let dep = new Dep(); // $data中所有属性添加一个发布订阅的功能
         Object.defineProperty(obj, key, {
             get() {
                 Dep.target && dep.addSub(Dep.target)
@@ -97,9 +97,9 @@ class Dep {
         this.subs = []
     }
     addSub(Watcher) {
-            this.subs.push(Watcher)
-        }
-        // 发布
+         this.subs.push(Watcher)
+     }
+     // 发布
     notify() {
         this.subs.forEach(watcher => watcher.update())
     }

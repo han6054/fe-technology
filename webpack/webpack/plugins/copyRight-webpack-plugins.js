@@ -1,14 +1,14 @@
 class copyRightWebpackPlugins {
     constructor() {}
     apply(compiler){
-        compiler.hooks.emit.tapAsync('copyRightWebpackPlugins',
+        compiler.plugin('emit',
             (compliation, cb) => {
                 compliation.assets['test.txt'] = {
                 source: () => {
-                    return 'hello txt'
+                    return 'hello hjj txt'
                 },
-                size: () => {
-                    return 1024
+                    size: () => {
+                        return 1024
                 }
             };
             cb()
