@@ -1,1 +1,3 @@
-console.log('b');
+let b = 2;
+
+module.exports = b;

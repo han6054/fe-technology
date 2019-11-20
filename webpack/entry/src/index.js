@@ -1,3 +1,3 @@
-import a from './a';
-import b from './b'
-console.log('入口文件')
+import a from './a.js';
+import b from './b.js'
+console.log(a+b);

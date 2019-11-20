@@ -58,7 +58,7 @@ const analyze = entry => {
   }
 }
 
-const info = analyze('./src/index.js')
+// const info = analyze('./src/index.js')
 // console.log(info);
 //{
 //   entry: './src/index.js',
@@ -67,9 +67,41 @@ const info = analyze('./src/index.js')
 //     '\n' +
 //     'var _a = _interopRequireDefault(require("./a"));\n' +
 //     '\n' +
-//     'var _b = _interopRequireDefault(require("./b"));\n' +
-//     '\n' +
-//     'function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }\n' +
-//     '\n' +
-//     "console.log('入口文件');"
+//     'var _b = _i '\n' +
+// //     'function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }\n' +
+// //     '\n' +
+// //     "console.log('入口文件');"nteropRequireDefault(require("./b"));\n' +
+//
 // }
+
+
+function depend (entry) {
+    const ana = analyze(entry);
+    let depAry = [ana];
+    for(let i =0; i< depAry.length; i++) {
+        const item = depAry[i];
+        const {dep} = item;
+            for(let j in dep) {
+                depAry.push(analyze(dep[j]));
+            }
+    }
+    // console.log(depAry);
+    let newMenu = {}
+    depAry.forEach(item => {
+        newMenu[item.entry] ={
+           dep: item.dep,
+           code: item.code
+        }
+    })
+    // console.log(newMenu);
+    return newMenu
+}
+// depend('./src/index.js');
+const generateCode = (entry) => {
+   let data = JSON.stringify(depend(entry));
+   return `(function(){
+       
+   })(${data})`;
+};
+let code = generateCode('./src/index.js');
+console.log(code)
