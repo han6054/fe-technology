@@ -1,3 +1,3 @@
 let b = 2;
 
-module.exports = b;
+export default b

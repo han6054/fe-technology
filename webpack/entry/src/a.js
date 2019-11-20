@@ -1,3 +1,3 @@
 let a = 1
 
-module.export = a
+export default a

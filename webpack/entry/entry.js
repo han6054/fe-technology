@@ -86,22 +86,39 @@ function depend (entry) {
             }
     }
     // console.log(depAry);
-    let newMenu = {}
+    let newMenu = {};
     depAry.forEach(item => {
-        newMenu[item.entry] ={
+        newMenu[item.entry] = {
            dep: item.dep,
            code: item.code
         }
-    })
+    });
     // console.log(newMenu);
     return newMenu
 }
 // depend('./src/index.js');
 const generateCode = (entry) => {
    let data = JSON.stringify(depend(entry));
-   return `(function(){
+   return `(function(data){
+   
+     function require(module) {
+       function localRequire(relativePath) {
+         return require(data[module].dep[relativePath])
+       }
+       var exports = {}
        
+       (function(require, exports, code){
+          eval(code)
+       })(localRequire, exports, data[module].code);
+       return exports;
+     }
+     require(${entry})
    })(${data})`;
 };
 let code = generateCode('./src/index.js');
-console.log(code)
+console.log(code);
+
+
+// 导出规范
+// import => exports default
+// require => module.exports
