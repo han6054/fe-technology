@@ -43,7 +43,7 @@ const analyze = entry => {
     })
     let {code} = babel.transformFromAst(ast, null, { // 对ast转码
         presets: ['@babel/preset-env']
-    })
+    });
     // console.log(code)
 //   var _a = _interopRequireDefault(require("./a"));
 //
@@ -112,7 +112,7 @@ const generateCode = (entry) => {
        })(localRequire, exports, data[module].code);
        return exports;
      }
-     require(${entry})
+     require(${entry}) 
    })(${data})`;
 };
 let code = generateCode('./src/index.js');
