@@ -12,7 +12,7 @@
 // })
 
 
-import {add} from '../../src/util'
+import { add } from '../../src/util'
 
 describe('测试加法', ()=> {
   it('测试数字相加', ()=> {
