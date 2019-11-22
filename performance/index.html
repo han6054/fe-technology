@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>throttle</title>
+    <style>
+        div {
+            width:500px;
+            height: 5000px;
+            background-color: #69d2e7;
+        }
+    </style>
+</head>
+<body>
+   <div>el</div>
+</body>
+<script>
+    // 函数节流, 无论调用多少次，函数都是某一段时间执行一次
+    function throttle(func, wait=100) {
+        let lastTime = 0;
+        return (...args) => {
+            let nowTime = new Date().getTime();
+            if(nowTime - lastTime > wait) {
+                func.apply(this, args);
+                lastTime = nowTime
+            }
+        }
+    }
+    function debounce(func, wait=350) {
+        let timer = 0;
+        return (...args) => {
+            if(timer) {
+                clearTimeout(timer)
+            }
+            timer = setTimeout(() => {
+                func.apply(this, args)
+            }, wait)
+        }
+    }
+    // 函数防抖，执行完统一执行，只认最后一次，比如在做电梯的时候，如果关门的过程中，有人要上来，不会走，等他上来一块走
+    // 检查用户名，等用户输入完成再向后端发起请求
+    let i = 1;
+   // window.addEventListener('scroll', throttle(()=> {
+   //     console.log(i);
+   //     i++;
+   // }, 500))
+    window.addEventListener('scroll', debounce(()=> {
+        console.log(i);
+        i++;
+    }, 500))
+</script>
+</html>

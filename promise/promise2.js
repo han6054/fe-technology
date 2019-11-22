@@ -60,7 +60,7 @@ function resolvePromise(promise2, x, resolve, reject) {
         }
         return
     }
-    console.log(`x typeOf is ${typeof x}`)
+    console.log(`x typeOf is ${typeof x}`);
     if(x !== null && (typeof x === 'function') || (typeof x === 'object')){
        try {
           then = x.then;

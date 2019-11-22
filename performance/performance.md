@@ -21,3 +21,28 @@
 `if-modified-since: 日期` 在这个时间之后文件有没有修改，如果没改过响应304，`not modified`
 浏览器直接用缓存
  优先级更高etag 文件指纹
+ 
+ ---
+ 
+ performance.getEntriesByType('navigation'); // 查看浏览器属性根据这个耗时进行优化
+ 
+ 重定向耗时：`redirectEnd - redirectStart`
+ 
+ DNS查找耗时:  `domainLookupEnd -  domainLookupStart`
+ 
+ TCP链接耗时：`connectEnd - connecrStart`
+ 
+ HTTP请求耗时: `responseEnd - responseStart`
+
+解析dom树耗时: `domComplete - domInteractive`
+
+白屏时间: `responseStart - navigationStart`
+
+DOMready时间: `domContentLoadedEventEnd - navigationStart`
+
+onLoad时间: `loadEventEnd - navigationStart` 也即是onload函数执行的时间
+
+---
+
+
+ 
