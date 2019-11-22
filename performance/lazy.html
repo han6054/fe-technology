@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lazy</title>
+</head>
+<style>
+    #container{
+        margin-top:300px;
+        margin-bottom: 300px
+    }
+    .img-container{
+
+        height:2000px;
+    }
+    img{
+        display: block;
+    }
+
+    #id{
+        width:100px;
+    }
+</style>
+<body>
+<div id='container'>
+    <div class="img-container">
+        <img  data-src="./01.jpeg" alt="">
+
+    </div>
+    <div class="img-container">
+        <img  data-src="./02.jpg" alt="">
+
+    </div>
+    <div class="img-container">
+        <img  data-src="./03.jpeg" alt="">
+
+    </div>
+</div>
+</body>
+<script>
+     const imgs = document.querySelectorAll('img');
+     const viewHeight = window.innerHeight || window.documentElement.innerHeight;
+     let num = 0;
+     for(var i=0;i<imgs.length;i++) {
+         console.log(imgs[i].getBoundingClientRect().top)
+     }
+</script>
+</html>
