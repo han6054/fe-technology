@@ -8,7 +8,7 @@ const analyze = entry => {
     const content = fs.readFileSync(entry, 'utf-8');
     const ast = parser.parse(content, {   // 入口文件解析成ast语法树
         sourceType: 'module'
-    })
+    });
     // console.log(ast);
     // Node {
     //     type: 'File',
@@ -56,7 +56,7 @@ const analyze = entry => {
        dep,
        code
   }
-}
+};
 
 // const info = analyze('./src/index.js')
 // console.log(info);
