@@ -44,8 +44,32 @@
      const imgs = document.querySelectorAll('img');
      const viewHeight = window.innerHeight || window.documentElement.innerHeight;
      let num = 0;
-     for(var i=0;i<imgs.length;i++) {
-         console.log(imgs[i].getBoundingClientRect().top)
+     function lazyload() {
+         for(var i=0;i<imgs.length;i++) {
+             // console.log(imgs[i].getBoundingClientRect().top)
+             let distance = viewHeight - imgs[i].getBoundingClientRect().top
+             if(distance > 0) {
+                 console.log(distance);
+                 imgs[i].src = imgs[i].getAttribute('data-src');
+                 // 前i张已经加载完毕， 下次i+1张开始检查是否露出
+                 num = i +1;
+             }
+         }
      }
+     function debounce(func, wait=350) {
+         let timer = 0;
+         return (...args) => {
+             if(timer) {
+                 clearTimeout(timer)
+             }
+             timer = setTimeout(() => {
+                 func.apply(this, args)
+             }, wait)
+         }
+     }
+     lazyload();
+     window.addEventListener('scroll', debounce(() => {
+         lazyload()
+     }))
 </script>
 </html>

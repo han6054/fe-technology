@@ -99,6 +99,9 @@ function depend (entry) {
 // depend('./src/index.js');
 const generateCode = (entry) => {
    let data = JSON.stringify(depend(entry));
+
+   //1. require执行，先自行自执行函数,  入参`localRequire`的`relativePath`实际上是代码data里code这个字段的代码的其中require函数中的入参
+    // 例："code": "\"use strict\";\n\nvar _a = _interopRequireDefault(require(\"./a.js\"));
    return `(function(data){
    
      function require(module) {
@@ -117,6 +120,47 @@ const generateCode = (entry) => {
 };
 let code = generateCode('./src/index.js');
 console.log(code);
+
+// webpack打包是通过，
+// 1. @babel/parser把js代码解析成ast语法树
+// 2. @babel/traverse接收ast对入口文件js代码进行深度遍历
+// 3. @@babel/core中的 transformFromAst 把ast转成js代码
+// 4. 生成入口文件依赖清单，key，value 数据结构，key为文件路径，value中两个字段, dep为依赖清单，code是js代码
+// 5. 由于AST把import转成require，创建require函数，执行他的入口文件
+// 6. 通过eval执行js代码。如果有require代码，找到对应依赖key`data[module].code`，执行依赖中js代码
+
+// --------------------------------------
+// (function(data) {
+//
+//     function require(module) {
+//         function localRequire(relativePath) {
+//             return require(data[module].dep[relativePath])
+//         }
+//         var exports = {}
+//
+//         (function(require, exports, code) {
+//             eval(code)
+//         })(localRequire, exports, data[module].code);
+//         return exports;
+//     }
+//     require(. / src / index.js)
+// })({
+//     "./src/index.js": {
+//         "dep": {
+//             "./a.js": "./src/a.js",
+//             "./b.js": "./src/b.js"
+//         },
+//         "code": "\"use strict\";\n\nvar _a = _interopRequireDefault(require(\"./a.js\"));\n\nvar _b = _interopRequireDefault(require(\"./b.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nconsole.log(_a[\"default\"] + _b[\"default\"]);"
+//     },
+//     "./src/a.js": {
+//         "dep": {},
+//         "code": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\nvar a = 1;\nvar _default = a;\nexports[\"default\"] = _default;"
+//     },
+//     "./src/b.js": {
+//         "dep": {},
+//         "code": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\nvar b = 2;\nvar _default = b;\nexports[\"default\"] = _default;"
+//     }
+// })
 
 
 // 导出规范
