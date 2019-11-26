@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .modal {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border:1px solid #dddddd;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+<body>
+<button id="modal-btn">弹窗</button>
+</body>
+<script>
+    function CreateSingleLayer(fn) {
+        let instance;
+        return function () {
+            return instance || (instance = fn.apply(this, arguments))
+        }
+    }
+    function createModal() {
+        let div = document.createElement('div');
+        div.innerHTML = '我是弹窗';
+        div.className = 'modal';
+        div.style.display = 'none';
+        document.body.appendChild(div);
+        return div;
+    }
+    document.getElementById('modal-btn').addEventListener('click', ()=> {
+        let modalLayer = new CreateSingleLayer(createModal)();
+        modalLayer.style.display = 'block'
+        console.log(modalLayer);
+    })
+</script>
+</html>
