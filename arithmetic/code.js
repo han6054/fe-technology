@@ -12,7 +12,7 @@ function findSum(arr, sum) { // 第一种方法，双重遍历  时间复杂度O
     }
 }
 
-function findSum(arr, sum) { // 第二种方法 和sum相减，找到剩余的数 时间复杂度O(n)
+function findSum2(arr, sum) { // 第二种方法 和sum相减，找到剩余的数 时间复杂度O(n)
     let obj = {};
     arr.forEach((item, index) => {
         if(String(item) in obj) {
@@ -21,6 +21,6 @@ function findSum(arr, sum) { // 第二种方法 和sum相减，找到剩余的�
         obj[sum-item] = index;  // { 1:0, 5,2,...}
     })
 }
-findSum(arr, sum);
+findSum2(arr, sum);
 
 

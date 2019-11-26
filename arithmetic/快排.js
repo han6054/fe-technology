@@ -18,32 +18,25 @@ function quickSort(arr) {  // 复杂度 O(n * lg)  lg16 = 4 （计算机中以2�
     return [...quickSort(left), flag, ...quickSort(right)]
 }
 
-function quickSort2(arr) {
-   if(arr.length <=1) return arr;
-    let flag = arr[0];
-    let i = 1;
-    let j = arr.length -1;
-    while (i<j) {
-        console.log(arr[j] >= flag, j, arr[j], '----j');
-        while (arr[j]>= flag && i<j) { //  右边找到比他小的就终止
-           j--;
+function quickSort2(arr) {  // 原地快排
+    if (arr.length <= 1) return arr;
+    let pivot = arr[0]
+    let i = 1
+    let j = arr.length-1
+    while(i<j){
+        let pivot = arr[0]
+        while(arr[j]>=pivot && i<j){
+            j -- }
+        while(arr[i]<=pivot  && i<j){
+            i ++
         }
-        console.log(arr[i] <= flag, i, arr[i], '----i');
-        while (arr[i]<=flag && i<j) { // 左边找到比他大的终止
-           i++
-        }
-        // 左边比他大的，和右边比他小的互换位置
-        let temp = arr[i];
-        arr[i]= arr[j];
-        arr[j] = temp;
-        console.log(`${arr[i]}和${arr[j]}互换`, arr)
+        let temp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = temp
     }
-    // flag 交换到正确的位置上
-    let temp = arr[0];
-    arr[0] = arr[j];
-    arr[j] = temp;
-    return quickSort2(arr.slice(0, i)).concat([flag]).concat(quickSort2(arr.slice(j+1)));
+    console.log(arr.slice(1, i + 1));
+    return [...quickSort2(arr.slice(1, i+1)), pivot, ...quickSort2(arr.slice(j+1))]
 }
-
 console.log(quickSort2([8,5,9,11,22,1,4,8,23]));
+// 原地快排，选取基准位，从左到右，从右到左同时查询，左边比他大的，右边比他小的跳出循环，交换位置，截取没有排序的数列，递归调用直到数组为空跳出循环。
 // console.log(quickSort(arr));
