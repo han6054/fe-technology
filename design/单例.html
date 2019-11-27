@@ -22,6 +22,7 @@
 <button id="modal-btn">弹窗</button>
 </body>
 <script>
+    // 单例模式，保证全局只有一个实例
     function CreateSingleLayer(fn) {
         let instance;
         return function () {

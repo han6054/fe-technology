@@ -4,7 +4,7 @@ export default class StateTest extends Component {
    state = {
        counter: 1
    };
-    componentDidMount() {
+    componentDidMount() {  // State 的更新会被合并
       // this.setState({counter: this.state.counter + 1})
       // this.setState({counter: this.state.counter + 1})
       // this.setState({counter: this.state.counter + 1})
