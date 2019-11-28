@@ -3,13 +3,13 @@ class Complier {
         // 判断el属性是否是元素
         this.el = this.isElementNode(el) ? el : document.querySelector(el);
         //获取到模板的属性放到fragment赋值完成后中统一渲染，避免dom回流
-        this.vm = vm
-        let fragment = this.node2fragment(this.el)
+        this.vm = vm;
+        let fragment = this.node2fragment(this.el);
             // 把节点和内容进行替换
 
 
         // 编译模板
-        this.complie(fragment)
+        this.complie(fragment);
 
         // 把内容塞到页面
         this.el.appendChild(fragment)
@@ -26,8 +26,8 @@ class Complier {
             [...attributes].forEach(attr => {
                 let { name, value: expr } = attr;
                 if (this.isDirective(name)) {
-                    let [, directive] = name.split('-')
-                    let [directiveName, eventName] = directive.split(':')
+                    let [, directive] = name.split('-');
+                    let [directiveName, eventName] = directive.split(':');
                         // 调用不同指令来处理
                     ComplieUtil[directiveName](node, expr, this.vm, eventName)
                 }
