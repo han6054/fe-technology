@@ -14,7 +14,7 @@ class Store {
      commit = (type, arg) => {
          if (!this.mutations[type]) return;
          this.mutations[type](this.state, arg)
-     }
+     };
      dispatch(type, arg) {
          this.actions[type]({
              commit: this.commit,
