@@ -1,6 +1,6 @@
 {
   "name": "hshc-fe-cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "花生好车vue模版",
   "main": "index.js",
   "bin": {
