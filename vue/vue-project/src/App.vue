@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png">
-<!--            <button v-has="'edit'">编辑</button>-->
-<!--            <button v-has="'add'">添加</button>-->
+            <button v-has="'edit'">编辑</button>
+            <button v-has="'add'">添加</button>
         <router-view></router-view>
         <div>
             <router-link to="/">home</router-link>

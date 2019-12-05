@@ -2,27 +2,27 @@
 
 let Vue;
 class Store {
-     constructor (options = {}) {
-         // 响应式
+    constructor (options = {}) {
+        // 响应式
         this.state = new Vue({
             data: options.state
         });
         this.mutations = options.mutations || {};
         this.actions = options.actions || {};
-     }
+    }
     // commit 修改mutation
-     commit = (type, arg) => {
-         if (!this.mutations[type]) return;
-         this.mutations[type](this.state, arg)
-     };
-     dispatch(type, arg) {
-         this.actions[type]({
-             commit: this.commit,
-             state: this.state
-         },arg)
-     }
- }
- function install(_Vue) {
+    commit = (type, arg) => {
+        if (!this.mutations[type]) return;
+        this.mutations[type](this.state, arg)
+    };
+    dispatch(type, arg) {
+        this.actions[type]({
+            commit: this.commit,
+            state: this.state
+        },arg)
+    }
+}
+function install(_Vue) {
     Vue = _Vue;
     Vue.mixin({
         beforeCreate() {
@@ -37,5 +37,3 @@ export default {
     Store,
     install
 }
-
-
