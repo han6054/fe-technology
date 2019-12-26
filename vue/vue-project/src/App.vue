@@ -20,12 +20,10 @@
                 inserted(el, bindings, vnode) {
                     let flag = vnode.context.$store.state.btnPermission[bindings['value']];
                     !flag && el.remove()
-
                 }
             }
         },
         components: {
-
         }
     }
 </script>
