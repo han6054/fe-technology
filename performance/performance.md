@@ -44,5 +44,14 @@ onLoad时间: `loadEventEnd - navigationStart` 也即是onload函数执行的时
 
 ---
 
+defer & async ／ preload & prefetch
+
+- defer 和 async 在网络读取的过程中都是异步解析
+- defer是有顺序依赖的，async只要脚本加载完后就会执行
+- preload 可以对当前页面所需的脚本、样式等资源进行预加载
+- prefetch 加载的资源一般不是用于当前页面的，是未来很可能用到的这样一些资源
+
+
+
 
  
