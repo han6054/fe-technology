@@ -1,6 +1,7 @@
 let arr = [17,13,1,2,5,3,8,11];
 let sum = 18;
-let counter = 0
+let counter = 0;
+// 查找数组数组中相加等于sum的数
 function findSum(arr, sum) { // 第一种方法，双重遍历  时间复杂度O(n^2)
     for(let i=0;i< arr.length;i++) {
         for(let j=i+1; j<arr.length;j++) {
