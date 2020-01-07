@@ -26,8 +26,8 @@ class subCounter extends React.Component {
     render() {
         return(<div>
             子计数：{this.props.count}
-        </div>)
-    }
+</div>)
+}
 }
 
 export default class Counter extends React.Component  {
