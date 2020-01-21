@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AntdTest from "./components/ant";
+import HomePage from './react-content'
 
 export default class CartSample extends Component {
     constructor(props) {
@@ -84,6 +85,7 @@ export default class CartSample extends Component {
                 {/*<Cart data={this.state.cart} minus={this.minus} add={this.add}></Cart>*/}
                 {/* antd */}
                 <AntdTest></AntdTest>
+                <HomePage></HomePage>
             </div>
         )
     }

@@ -27,6 +27,16 @@ CSRF 防范：
 
 三 iframe 隐藏，诱导用户点击
 
+四 DDOS攻击 分布式拒绝服务访问攻击
+
+1. HTTP FLOOD
+2. SYN FLOOD
+
+防御手段：备份网站
+
+
+
+
 
 
 
