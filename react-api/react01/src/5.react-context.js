@@ -1,3 +1,6 @@
+
+// react 上下文处理多层组件传递问题
+
 import React,{ Component } from 'react';
 import PropTypes from 'prop-types'
 class Title extends Component {
