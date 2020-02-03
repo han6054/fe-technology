@@ -90,10 +90,11 @@
 /*!********************!*\
   !*** ./element.js ***!
   \********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\nlet Utils = __webpack_require__(/*! ./utils */ \"./utils.js\")\n\nclass Element {\n    /*\n      @tagName 标签名\n      @attrs 属性对象\n      @children 子元素数组\n    */\n    constructor(tagName, attrs, children) {\n        this.tagName = tagName;\n        this.attrs = attrs;\n        this.children = children || [];\n    }\n    render() {\n        let element = document.createElement(this.tagName); \n        // real dom add attrs\n        for(let attr in this.attrs) {\n            Utils.setAttr(element, attr, this.attrs[attr])\n        }\n        // 递归遍历，深度优先\n        this.children.forEach(child => {\n           console.log(child instanceof Element)\n           let childElement = (child instanceof Element)? child.render(): document.createTextNode(child);    \n           element.appendChild(childElement);\n        });\n        return element\n    }\n}\nfunction createElement(tagName, attrs, children) {\n  return new Element(tagName, attrs, children);\n}\nmodule.exports = { createElement };\n\n//# sourceURL=webpack:///./element.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return patch; });\n\nlet Utils = __webpack_require__(/*! ./utils */ \"./utils.js\")\n\nclass Element {\n    /*\n      @tagName 标签名\n      @attrs 属性对象\n      @children 子元素数组\n    */\n    constructor(tagName, attrs, children) {\n        this.tagName = tagName;\n        this.attrs = attrs;\n        this.children = children || [];\n    }\n    render() {\n        let element = document.createElement(this.tagName); \n        // real dom add attrs\n        for(let attr in this.attrs) {\n            Utils.setAttr(element, attr, this.attrs[attr])\n        }\n        // 递归遍历，深度优先\n        this.children.forEach(child => {\n           console.log(child instanceof Element)\n           let childElement = (child instanceof Element)? child.render(): document.createTextNode(child);    \n           element.appendChild(childElement);\n        });\n        return element\n    }\n}\nfunction createElement(tagName, attrs, children) {\n  return new Element(tagName, attrs, children);\n}\n\n// patch\nlet allPaches = {};\nlet index = 0; //默认哪个需要补丁\nfunction patch(dom, patches) {\n    allPaches = patches;\n    walk(dom);\n}\n\nfunction walk(dom) {\n    let currentPatche = allPaches[index++];\n    let childNodes = dom.childNodes;\n    childNodes.forEach(element => walk(element));\n    if (currentPatche > 0) {\n        doPatch(dom, currentPatche);\n    }\n}\n\nfunction doPatch(node, patches) {\n    patches.forEach(patch => {\n        switch (patch.type) {\n            case 'ATTRS':\n                Utils.setAttr(patch.attrs)//别的文件方法\n                break;\n            case 'TEXT':\n                node.textContent = patch.text;\n                break;\n            case 'REPLACE':\n                let newNode = patch.newNode instanceof Element ? render(patch.newNode) : document.createTextNode(patch.newNode);\n                node.parentNode.replaceChild(newNode, node)\n                break;\n            case 'REMOVE':\n                node.parentNode.removeChild(node);\n                break;\n        }\n    })\n}\n\nmodule.exports = { createElement };\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack:///./element.js?");
 
 /***/ }),
 
@@ -105,6 +106,17 @@ eval("\nlet Utils = __webpack_require__(/*! ./utils */ \"./utils.js\")\n\nclass 
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("let {createElement} = __webpack_require__(/*! ./element.js */ \"./element.js\")\n\nlet ul1 = createElement('ul', {class: 'list'}, [\n    createElement('li', {class: 'item'}, ['1']),\n    createElement('li', {class: 'item'}, ['2']),\n    createElement('li', {class: 'item'}, ['3'])\n])\nlet root = ul1.render();\ndocument.body.appendChild(root)\n\n//# sourceURL=webpack:///./index.js?");
+
+/***/ }),
+
+/***/ "./node_modules/webpack/buildin/harmony-module.js":
+/*!*******************************************!*\
+  !*** (webpack)/buildin/harmony-module.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpackPolyfill) {\n\t\tvar module = Object.create(originalModule);\n\t\t// module.parent = undefined by default\n\t\tif (!module.children) module.children = [];\n\t\tObject.defineProperty(module, \"loaded\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.l;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"id\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.i;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"exports\", {\n\t\t\tenumerable: true\n\t\t});\n\t\tmodule.webpackPolyfill = 1;\n\t}\n\treturn module;\n};\n\n\n//# sourceURL=webpack:///(webpack)/buildin/harmony-module.js?");
 
 /***/ }),
 

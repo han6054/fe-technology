@@ -30,4 +30,42 @@ class Element {
 function createElement(tagName, attrs, children) {
   return new Element(tagName, attrs, children);
 }
+
+// patch
+let allPaches = {};
+let index = 0; //默认哪个需要补丁
+export default function patch(dom, patches) {
+    allPaches = patches;
+    walk(dom);
+}
+
+function walk(dom) {
+    let currentPatche = allPaches[index++];
+    let childNodes = dom.childNodes;
+    childNodes.forEach(element => walk(element));
+    if (currentPatche > 0) {
+        doPatch(dom, currentPatche);
+    }
+}
+
+function doPatch(node, patches) {
+    patches.forEach(patch => {
+        switch (patch.type) {
+            case 'ATTRS':
+                Utils.setAttr(patch.attrs)//别的文件方法
+                break;
+            case 'TEXT':
+                node.textContent = patch.text;
+                break;
+            case 'REPLACE':
+                let newNode = patch.newNode instanceof Element ? render(patch.newNode) : document.createTextNode(patch.newNode);
+                node.parentNode.replaceChild(newNode, node)
+                break;
+            case 'REMOVE':
+                node.parentNode.removeChild(node);
+                break;
+        }
+    })
+}
+
 module.exports = { createElement };
