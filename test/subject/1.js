@@ -36,7 +36,7 @@ console.log((5).add(3).minus(2));
          return x + y
      }
  }
- let fn = x => y => x + y
+ let fn11 = x => y => x + y;
 /*
    2.箭头函数this是所属上下文，是继承函数上下文的this
 */
@@ -44,11 +44,11 @@ let obj = {};
 function fn1() {
     console.log(this)
 }
-fn1.call(obj) // this是obj
+fn1.call(obj); // this是obj
 let fn2 = () => {
     console.log(this)
-}
-fn2.call(obj) // this是window
+};
+fn2.call(obj); // this是window
  // 3.箭头函数没有arguments 类数组
 
  // 4. 箭头函数不能被new执行，因为箭头函数没有this，也没有prototype
@@ -69,7 +69,8 @@ str = str.replace(/[a-zA-z]/g, content => {
     function myIndexOf(T){
        let lenT = T.length,
            lenS = this.length,
-           res = 0;
+           res = -1;
+       if(lenT > lenS) return -1;
        for(let i =0;i<= lenS - lenT; i++) {
            if(this.substr(i,lenT) === T) {
                res = i;
