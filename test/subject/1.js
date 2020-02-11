@@ -52,3 +52,36 @@ fn2.call(obj) // this是window
  // 3.箭头函数没有arguments 类数组
 
  // 4. 箭头函数不能被new执行，因为箭头函数没有this，也没有prototype
+
+
+ // 4. 把一个字符串大小写取反，aBc, AbC .
+
+let str = 'aBc';
+str = str.replace(/[a-zA-z]/g, content => {
+    return content.toUpperCase() === content ? conent.toLowerCase() : 
+    content.toUpperCase()
+});
+
+
+
+//5. 实现字符串匹配算法，从字符串S中，查找到是否存在字符串T，若存在返回所在位置，不存在返回-1
+!(function() {
+    function myIndexOf(T){
+       let lenT = T.length,
+           lenS = this.length,
+           res = 0;
+       for(let i =0;i<= lenS - lenT; i++) {
+           if(this.substr(i,lenT) === T) {
+               res = i;
+               break;
+           }
+       }
+      return res;
+    }
+    String.prototype.myIndexOf = myIndexOf;
+})();
+let S = 'abc123efg',
+    T = '123';
+
+console.log(S.myIndexOf(T));
+
