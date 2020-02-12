@@ -67,17 +67,22 @@ str = str.replace(/[a-zA-z]/g, content => {
 //5. 实现字符串匹配算法，从字符串S中，查找到是否存在字符串T，若存在返回所在位置，不存在返回-1
 !(function() {
     function myIndexOf(T){
-       let lenT = T.length,
-           lenS = this.length,
-           res = -1;
-       if(lenT > lenS) return -1;
-       for(let i =0;i<= lenS - lenT; i++) {
-           if(this.substr(i,lenT) === T) {
-               res = i;
-               break;
-           }
-       }
-      return res;
+      //  let lenT = T.length,
+      //      lenS = this.length,
+      //      res = -1;
+      //  if(lenT > lenS) return -1;
+      //  for(let i =0;i<= lenS - lenT; i++) {
+      //      if(this.substr(i,lenT) === T) {
+      //          res = i;
+      //          break;
+      //      }
+      //  }
+      // return res;
+
+        let reg = new RegExp(T);
+        let res = reg.exec(this);
+        return res === null ?  -1: res.index
+
     }
     String.prototype.myIndexOf = myIndexOf;
 })();
@@ -85,4 +90,5 @@ let S = 'abc123efg',
     T = '123';
 
 console.log(S.myIndexOf(T));
+
 
