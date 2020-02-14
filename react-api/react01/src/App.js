@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 // import AntdTest from "./components/ant";
 // import HomePage from './5.react-context'
-import Memo from './highorder/index.js'
+// import Memo from './highorder/index.js'
+import FromSimple from "./FromSimple";
 
 
 export default class CartSample extends Component {
@@ -88,7 +89,8 @@ export default class CartSample extends Component {
                 {/* antd */}
                 {/*<AntdTest></AntdTest>*/}
                 {/*<HomePage></HomePage>*/}
-                <Memo/>
+                {/*<Memo/>*/}
+                <FromSimple/>
             </div>
         )
     }

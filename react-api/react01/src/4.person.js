@@ -1,3 +1,5 @@
+// react 父子传值
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import propsTypes from 'prop-types';

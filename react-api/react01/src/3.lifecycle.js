@@ -46,7 +46,9 @@ export default class Counter extends React.Component  {
     handleClick = () => {
       this.setState(prevState=> ({
           count: prevState.count + 1
-      }));
+      }),()=> {
+
+      });
     };
     componentWillUnmount() { // 组件销毁
         console.log('componentWillUnmount');
