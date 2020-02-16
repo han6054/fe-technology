@@ -37,6 +37,13 @@ export default class FromSimple extends Component {
                         <input type="text" value={this.state.password} onChange={this.handlePassword} id="pwd"/>
                     </p>
                     <br/>
+                    <p>
+                       爱好:
+                        <select>
+                            <option value="smoking">抽烟</option>
+                            <option value="drink">喝酒</option>
+                        </select>
+                    </p>
                     <input type="submit" value="登录"/>
                 </form>
             </div>

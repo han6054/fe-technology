@@ -23,6 +23,7 @@
         let lastTime = 0;
         return (...args) => {
             let nowTime = new Date().getTime();
+            console.log(lastTime);
             if(nowTime - lastTime > wait) {
                 func.apply(this, args);
                 lastTime = nowTime
@@ -47,9 +48,10 @@
    //     console.log(i);
    //     i++;
    // }, 500))
-    window.addEventListener('scroll', debounce(()=> {
+    window.addEventListener('scroll', throttle(()=> {
         console.log(i);
         i++;
-    }, 500))
+    }, 500));
+
 </script>
 </html>

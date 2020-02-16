@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+<script>
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    function Person(x,y) {
+        this.x= x;
+        this.y = y;
+        this.state = 0;
+    }
+    Person.prototype = {
+        update:function(){
+           this.state++;
+            // this.x+=5; x轴移动
+           if(this.state > 3) {
+               this.state = 0;
+           }
+        },
+        render: function (image) {
+            ctx.drawImage(image, 45 * this.state, 135, 45, 64, this.x, this.y, 45, 64);
+        }
+    };
+
+    // let d = 200;
+    // Object.keys(obj).forEach(item => {
+    //     obj[item].onload = function () {
+    //         let person = new Person(d,200);
+    //             setInterval(() => {
+    //                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //                 person.update();
+    //                 person.render(this);
+    //             },200);
+    //         d+=200;
+    //     };
+    // });
+    // obj['image1'].onload = function () {
+    //     let person = new Person(200,200);
+    //     setInterval(() => {
+    //         ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //         person.update();
+    //         person.render(this, 32, 48);
+    //     },200)
+    // };
+
+    // 游戏控制类
+    function Game() {
+        let self = this;
+        this.image = new Image();
+        this.image.src = './1.png';
+        this.image.onload = function () {
+            self.run();
+        };
+        this.person = new Person(200,200);
+    }
+    Game.prototype = {
+        loop: function () {
+            let self = this;
+             ctx.clearRect(0, 0, canvas.width, canvas.height);
+             this.person.update();
+             this.person.render(self.image, 32, 48);
+        },
+        run: function () {
+           let self = this;
+           this.timer = setInterval(()=> {
+               self.loop()
+           },200);
+        },
+        stop: function () {
+           clearTimeout(this.timer)
+        }
+    };
+
+    let game = new Game();
+
+</script>
+</html>

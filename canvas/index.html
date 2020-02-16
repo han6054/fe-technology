@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+<script>
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    // ctx.fillRect(100, 100, 200, 200);
+    // 绘制：填充和描边
+    // ctx.beginPath();
+    // ctx.moveTo(100,100);
+    // ctx.lineTo(200,100);
+    // ctx.lineTo(200,200);
+    // ctx.closePath();
+    // ctx.lineWidth = '20';
+    // ctx.strokeStyle  = 'red';
+    // ctx.stroke();
+    // ctx.fillStyle = 'blue';
+    // ctx.fill()
+    // 矩形
+    // ctx.rect(0,0,100,100);
+    // 弧形
+    // for(let i = 50; i<300; i+=20) {
+    //     ctx.beginPath();
+    //     ctx.arc(200,200,i,0,2* Math.PI,false);
+    //     ctx.closePath();
+    //     ctx.stroke();
+    // }
+    // 设置图片
+    // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+
+    function Ball (x,y) {
+        this.x = x;
+        this.y = y;
+        this.r = 50;
+
+        this.dx = Math.random()*10 - 5;
+        this.dy = Math.random()*10 - 5;
+        this.dR = Math.random() + 0.3;
+        BallArray.push(this);
+    }
+    Ball.prototype = {
+        update:function() {
+            this.x+= this.dx;
+            this.y+= this.dy;
+            this.r-= this.dR;
+            if(this.r < 0) {
+                this.r = 0;
+                BallArray.forEach((ball,index) => {
+                    if(ball === this) {
+                        BallArray.splice(index,1);
+                    }
+                })
+            }
+        },
+        render: function () {
+           ctx.beginPath();
+           ctx.arc(this.x,this.y,this.r, 0, 2 * Math.PI,true);
+           ctx.fillStyle = 'blue';
+           ctx.fill()
+        }
+    };
+    let BallArray = [];
+    new Ball(200,100);
+    new Ball(300,100);
+    new Ball(100,100);
+    setInterval(()=> {
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+        for(let i= 0;i< BallArray.length;i++) {
+            let ball = BallArray[i];
+            ball.update();
+            ball.render();
+
+        }
+    },100);
+    canvas.addEventListener("mousemove",function (event) {
+          new Ball(event.offsetX, event.offsetY);
+    });
+</script>
+</html>
