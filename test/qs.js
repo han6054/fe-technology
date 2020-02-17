@@ -26,6 +26,7 @@ String.prototype.myQs = function() {
     let reg = /([^&?=]+)=([^&?=]+)/g,
         obj = {};
     this.replace(reg, function () {
+        console.log(arguments[1], arguments[2]);
         obj[arguments[1]] = arguments[2];
     });
     return obj;
