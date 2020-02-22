@@ -4,7 +4,7 @@
 // 3。内存泄漏的例子
 // 4。bfc
 // 5。结构 c obj = {a:{b: {c:{}}}}
-// 6.数组去重 ,
+// 6.数组去重
 // 7 vue传值
 // 8.页面优化
 // 9.http2 http 和https
@@ -17,6 +17,7 @@
 // 16.vue中如何重写数组的
 
 //1.
+
 
 //2.export可以事先定义, import导入需要用{}.
 // export default 只能导出一次。默认导出一个对象。import导入不需要{}
@@ -36,7 +37,50 @@
 
 //5. let {a:{b:{c}}} = obj
 
-//6.
+//6. 去重
+let arr = [1,2,3,4,1,5,21,22,2,4,5];
+function uniqueArr(arr) {
+    let _arr = [], isRepeat = false;
+    for(let i = 0 ;i<arr.length;i++) {
+        isRepeat = false;
+        for(let j = 0;j<_arr.length;j++) {
+            if(arr[i] === _arr[j]) {
+                isRepeat = true;
+                break;
+            }
+        }
+        if(!isRepeat) {
+            _arr.push(arr[i])
+        }
+    }
+    return _arr;
+}
+// console.log(uniqueArr(arr));
+
+function uniqueArr1(arr) {
+   return  arr.filter((item,index,arr) => {
+       return arr.indexOf(item, 0) === index;
+   });
+}
+// console.log(uniqueArr1((arr)));
+
+function uniqueArr2(arr) {
+   return [...new Set(arr)]
+}
+// console.log(uniqueArr2(arr));
+
+function uniqueArr3(arr) {
+    let _arr = [];
+    arr.forEach(item => {
+       if(!_arr.includes(item)) {
+           _arr.push(item)
+       }
+    });
+    return _arr;
+}
+// console.log(uniqueArr3(arr));
+
+
 //7.
 //8.
 //9.
@@ -64,6 +108,23 @@
 // });
 
 //15.
+// 1. 原型继承，父类中的属性拷贝一份给子类的原型对象 （新实例无法向父类构造函数传参）（所有新实例都会共享父类实例的属性，修改属性相互影响）
+// function Child() {}
+// function Parent() {}
+// Child.prototype = new Parent();
+// Child.constructor = Child;
+//=========================================================================================
+// 2. call继承    （只能继承父类构造函数的属性）
+//=========================================================================================
+// 3. 组合继承
+// function  Parent() {}
+// function Child(name) {
+//     Parent.call(this, name)
+// }
+// Child.prototype = Object.create(Parent.prototype);
+// Child.constructor = Child;
+//=========================================================================================
+
 
 //16.对象里目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。存取描述符是由getter-setter函数对描述的属性，也就是我们用来给对象做响应式绑定的
 // 因为如果我们使用Object.defineProperty对数组进行响应式化是有缺陷的，对数组push等操作和length变化是无法劫持到的，

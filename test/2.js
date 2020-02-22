@@ -17,5 +17,3 @@ function factor(number) {
 }
 
 console.log(factor(75));
-
-
