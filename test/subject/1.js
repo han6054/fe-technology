@@ -58,7 +58,7 @@ fn2.call(obj); // this是window
 
 let str = 'aBc';
 str = str.replace(/[a-zA-z]/g, content => {
-    return content.toUpperCase() === content ? conent.toLowerCase() : 
+    return content.toUpperCase() === content ? conent.toLowerCase() :
     content.toUpperCase()
 });
 
@@ -90,5 +90,7 @@ let S = 'abc123efg',
     T = '123';
 
 console.log(S.myIndexOf(T));
+
+
 
 
