@@ -104,6 +104,7 @@ MyPromise.prototype.then = function(onResolved, onRejected) {
                 }
             });
 
+
             self.onRejectedCallback.push(function(reason) {
                 try {
                     let x = onRejected(reason);
@@ -178,4 +179,5 @@ MyPromise.all = function (promises){
             })
         }
     });
-}
+};
+// then方法不能返回this，因为Promise的状态不可改变，而且每次then方法调用的结果可能不同，所以每次调用then方法需要返回一个新的promise

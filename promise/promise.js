@@ -47,7 +47,7 @@ MyPromise.prototype.then = function (onResolved, onRejected) {
     onRejected = typeof onRejected === 'function' ? onRejected: (r) => { throw r };
 
     if (self.status === 'resolved') {
-        return promise2 = new Promise((resolve,reject) => {
+       return  promise2 = new Promise((resolve,reject) => {
             try {
                 let x = onResolved(self.data);
                 if (x instanceof Promise) {
@@ -57,7 +57,7 @@ MyPromise.prototype.then = function (onResolved, onRejected) {
             } catch (e) {
                 reject(e) //
             }
-        })
+        });
     }
     if (self.status === 'rejected') {
         return promise2 = new Promise((resolve,reject) => {
@@ -99,3 +99,15 @@ MyPromise.prototype.then = function (onResolved, onRejected) {
 MyPromise.prototype.catch = function (onRejected) {
     return this.then(null, onRejected)
 };
+
+
+
+let p = new MyPromise(resolve => {
+    setTimeout(()=> {
+        resolve(1)
+    },1000);
+}).then((value)=> {
+    console.log(value)
+}).then(res => {
+    console.log('2')
+});
