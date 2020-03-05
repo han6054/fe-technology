@@ -38,5 +38,22 @@
  // console.log( calculateBonus( 'S', 20000 ) );// 输出:80000 console.log( calculateBonus( 'A', 10000 ) );// 输出:30000
 
 
+ // 单例模式： 创建出的类只有一个实例，第二次使用同一个类创建对象时候，得到的对象和第一次相同
+ class Window {
+     constructor(name) {
+       this.name = name;
+     }
+     static getInstance(name) {
+         if(!this.instance) {
+             this.instance = new Window(name);
+         }
+         return this.instance;
+     }
+ }
+ var w1 = Window.getInstance();
+ var w2 = Window.getInstance();
+ console.log(w1 === w2);
+
+
 
 
