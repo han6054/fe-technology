@@ -63,11 +63,12 @@ var c;
         };
     }
     function setAge(age) {
-        return function (target, methodName, propertyDescriptor) {
+        return function (target, methodName, descriptor) {
             target.age = age;
         };
     }
     function toNumber(target, methodName, propertyDescriptor) {
+        console.log(methodName, propertyDescriptor, '@toNumber');
         var oldMethod = propertyDescriptor.value;
         propertyDescriptor.value = function () {
             var args = [];

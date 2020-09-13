@@ -10,7 +10,7 @@ namespace a {
     } 
     @enhancer
     class Person {
-        constructor() { }
+        constructor() {}
     }
     let p = new Person();
     console.log(p.xx); 
@@ -56,11 +56,12 @@ namespace c {
         }
     }
     function setAge(age: number) {
-        return function(target: any, methodName: string, propertyDescriptor: PropertyDescriptor) {
+        return function(target: any, methodName: string, descriptor: PropertyDescriptor) {
             target.age = age;
         }
     }
     function toNumber(target: any, methodName: string, propertyDescriptor: PropertyDescriptor) {
+        console.log(methodName, propertyDescriptor ,'@toNumber');
         let oldMethod = propertyDescriptor.value
         propertyDescriptor.value = function(...args: any[]) {
             args = args.map(item => parseFloat(item));
