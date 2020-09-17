@@ -8,6 +8,8 @@ module
 - umd 
 兼容以上三种  
 ---
+ ###### vscode 支持ts插件
+- Types auto installer
 
 - 装饰器
 1. 类 

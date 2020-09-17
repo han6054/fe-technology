@@ -1,29 +1,28 @@
 "use strict";
+// 装饰器
+// namespace a {
+//     interface Person {
+//         xx: string,
+//         yy: string,
+//     }
+//     function enhancer(target:any) { // 装饰类
+//         target.prototype.xx = 'xx';
+//         target.prototype.yy = 'yy';
+//     } 
+//     @enhancer
+//     class Person {
+//         constructor() {}
+//     }
+//     let p = new Person();
+//     console.log(p.xx); 
+//     console.log(p.yy);
+// }
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// 装饰器
-var a;
-(function (a) {
-    function enhancer(target) {
-        target.prototype.xx = 'xx';
-        target.prototype.yy = 'yy';
-    }
-    var Person = /** @class */ (function () {
-        function Person() {
-        }
-        Person = __decorate([
-            enhancer
-        ], Person);
-        return Person;
-    }());
-    var p = new Person();
-    console.log(p.xx);
-    console.log(p.yy);
-})(a || (a = {}));
 // namespace b {  // 如果一个类不能改，用装饰器继承这个父类
 //     interface Person {
 //         age: number;
@@ -58,19 +57,19 @@ var c;
         });
     }
     function methodEnumerable(flag) {
-        return function (target, methodName, propertyDescriptor) {
-            propertyDescriptor.enumerable = flag;
+        return function (target, propertyName, descriptor) {
+            descriptor.enumerable = flag;
         };
     }
     function setAge(age) {
-        return function (target, methodName, descriptor) {
+        return function (target, propertyName, descriptor) {
             target.age = age;
         };
     }
-    function toNumber(target, methodName, propertyDescriptor) {
-        console.log(methodName, propertyDescriptor, '@toNumber');
-        var oldMethod = propertyDescriptor.value;
-        propertyDescriptor.value = function () {
+    function toNumber(target, propertyName, descriptor) {
+        console.log(propertyName, descriptor, '@toNumber');
+        var oldMethod = descriptor.value;
+        descriptor.value = function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];

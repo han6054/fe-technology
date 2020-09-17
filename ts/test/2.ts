@@ -1,21 +1,21 @@
 // 装饰器
-namespace a {
-    interface Person {
-        xx: string,
-        yy: string,
-    }
-    function enhancer(target:any) { // 装饰类
-        target.prototype.xx = 'xx';
-        target.prototype.yy = 'yy';
-    } 
-    @enhancer
-    class Person {
-        constructor() {}
-    }
-    let p = new Person();
-    console.log(p.xx); 
-    console.log(p.yy);
-}
+// namespace a {
+//     interface Person {
+//         xx: string,
+//         yy: string,
+//     }
+//     function enhancer(target:any) { // 装饰类
+//         target.prototype.xx = 'xx';
+//         target.prototype.yy = 'yy';
+//     } 
+//     @enhancer
+//     class Person {
+//         constructor() {}
+//     }
+//     let p = new Person();
+//     console.log(p.xx); 
+//     console.log(p.yy);
+// }
 
 // namespace b {  // 如果一个类不能改，用装饰器继承这个父类
 //     interface Person {
@@ -51,19 +51,19 @@ namespace c {
         });
     }
     function methodEnumerable(flag: boolean) {
-        return function(target: any, methodName: string, propertyDescriptor: PropertyDescriptor) {
-            propertyDescriptor.enumerable = flag;
+        return function(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+            descriptor.enumerable = flag;
         }
     }
     function setAge(age: number) {
-        return function(target: any, methodName: string, descriptor: PropertyDescriptor) {
+        return function(target: any, propertyName: string, descriptor: PropertyDescriptor) {
             target.age = age;
         }
     }
-    function toNumber(target: any, methodName: string, propertyDescriptor: PropertyDescriptor) {
-        console.log(methodName, propertyDescriptor ,'@toNumber');
-        let oldMethod = propertyDescriptor.value
-        propertyDescriptor.value = function(...args: any[]) {
+    function toNumber(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+        console.log(propertyName, descriptor ,'@toNumber');
+        let oldMethod = descriptor.value
+        descriptor.value = function(...args: any[]) {
             args = args.map(item => parseFloat(item));
             return oldMethod.apply(this, args);
         }
