@@ -1,5 +1,5 @@
-import Vue from 'vue'
 
+/* eslint-disable */
 function ValideRule() {
   let me = this;
 
@@ -59,13 +59,13 @@ function ValideRule() {
       return true;
     },
     maxlength: function(val, opt) {
-      return me.__getByteLength(val) <= opt;
+      return me.__getByteLength(val) <= opt.value;
     },
     minlength: function(val, opt) {
-      return me.__getByteLength(val) >= opt;
+      return me.__getByteLength(val) >= opt.value;
     },
     rangelength: function(val, opt) {
-      return val.length >= opt[0] && val.length <= opt[1];
+      return val.length >= opt.value[0] && val.length <= opt.value[1];
     },
     equal: function(val, opt) {
       return val === (typeof opt == "function" ? opt() : opt);
@@ -173,7 +173,7 @@ Validate.prototype = {
       resultList = [],
       params = {},
       result = false;
-    keyList.forEach(item => {
+    keyList.map(item => {
       me.__validateField(item, (val, rs, list) => {
         if (list.length > 0) {
           resultList = resultList.concat(list.shift());
@@ -185,7 +185,7 @@ Validate.prototype = {
       });
       if (resultList.length > 0) {
         if (resultList[0].message) {
-          Vue.prototype.$toast(resultList[0].message);
+            // console.log(resultList[0].message)
         }
         return false;
       }
@@ -227,7 +227,6 @@ Validate.prototype = {
         if (resultList.length > 0) {
           if (resultList[0].message) {
             console.log(resultList[0].message)
-            Vue.prototype.$toast(resultList[0].message)
           }
           break;
         }
